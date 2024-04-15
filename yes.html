@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./yes_style.css">
+    </head> 
+    <body>
+        <div class="container">
+            <div>
+                <h1 class="header_text">Nhớ mở tiếng lên nhé!!</h1>
+            </div>
+            <div class="gif_container">
+                <img class="gif_image" id="gifImage" src="" alt="Cute animated illustration">
+            </div>
+            <div>
+                <h1 class="header_text">Còn đây là ly cocktail của chị ^^ </h1>
+            </div>
+            <div class="cocktail_container">
+                <h2 class="cocktail_name" id="cocktailName"></h2>
+                <p class="cocktail_description" id="cocktailDescription"></p>
+                <img class="cocktail_image" id="cocktailImage" src="" alt="Cocktail Image">
+            </div>
+        </div>
+
+        <audio src="./song.mp3" autoplay loop></audio>
+
+        <script>
+            // Retrieve the selected cocktail information from the URL parameter
+            var urlParams = new URLSearchParams(window.location.search);
+            var cocktailParam = urlParams.get('cocktail');
+            var selectedCocktail = JSON.parse(decodeURIComponent(cocktailParam));
+
+            // Set the cocktail name, description, and image on the page
+            document.getElementById('cocktailName').textContent = selectedCocktail.name;
+            document.getElementById('cocktailDescription').textContent = selectedCocktail.description;
+            document.getElementById('cocktailImage').src = "./Cosmopolitan.png";
+
+            // Array of GIF URLs
+            var gifUrls = [
+                "./ted_singing.gif",
+                "./ted_dancing.gif"
+            ];
+
+            // Function to cycle through GIFs
+            function cycleGifs() {
+                var gifIndex = 0;
+                var gifImage = document.getElementById('gifImage');
+
+                setInterval(function() {
+                    gifImage.src = gifUrls[gifIndex];
+                    gifIndex = (gifIndex + 1) % gifUrls.length;
+                }, 3000); // Change the duration (in milliseconds) between GIF changes if desired
+            }
+
+            // Call the function to start cycling GIFs
+            cycleGifs();
+        </script>
+    </body> 
+</html>

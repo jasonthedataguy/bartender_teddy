@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./style.css">
+        
+    </head> 
+    <body>
+        <div class="container">
+            <div >
+                <h1 class = "header_text">Chào chị Hằng, em là Gấu Iu của bố Jason</h1>
+                <h1 class = "header_text">Để em chọn cho chị một ly cocktail và hát cho chị nghe một bài nhé ?</h1>
+            </div>
+            <div class="gif_container">
+                <img src="./ted_kiss.gif" alt="Cute animated illustration">
+            </div>
+            <div class = "buttons">
+                <button class="btn" id = "yesButton" onclick="nextPage()">Đồng ý, chọn cho chị đi</button>
+                <!-- <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button> -->
+                <script>
+
+                    function nextPage() {
+                        // Define an array of cocktails with names and descriptions
+                        var cocktails = [
+                            {
+                                name: "Cosmopolitan",
+                                description: "Classic cocktail with vodka, cranberry juice, lime juice, and orange liqueur"
+                            },
+                            {
+                                name: "Mojito",
+                                description: "Refreshing mix of rum, mint leaves, lime juice, simple syrup, and soda water"
+                            },
+                            {
+                                name: "Margarita",
+                                description: "Tequila-based cocktail with lime juice, triple sec, and agave syrup or simple syrup"
+                            }
+                            // Add more cocktails here
+                        ];
+
+                        // Select a random cocktail from the array
+                        var randomIndex = Math.floor(Math.random() * cocktails.length);
+                        var selectedCocktail = cocktails[randomIndex];
+
+                        // Pass the selected cocktail as a parameter to the next page
+                        window.location.href = "yes.html?cocktail=" + encodeURIComponent(JSON.stringify(selectedCocktail));
+                    }                    
+                    
+                    // function moveButton() {
+                    //     var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
+                    //     var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
+                    //     document.getElementById('noButton').style.left = `${x}px`;
+                    //     document.getElementById('noButton').style.top = `${y}px`;
+                    // }
+                </script> 
+            </div>
+        </div>
+       
+    </body> 
+</html>
